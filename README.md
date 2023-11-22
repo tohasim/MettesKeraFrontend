@@ -7,4 +7,3 @@ Should work "out of the box" with this backend: https://github.com/kea-spring202
 [info](https://docs.google.com/document/d/1k5T7rRSrGetjuMdYoErk4ToZTk22QyBpR-x17nmtRos/edit?usp=sharing)
 
 
-## Alex er cool
