@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+
     <div class="container">
         <h1 class="text-center">Tilføj et nyt produkt!</h1>
         <form enctype="multipart/form-data" class="mt-4">
@@ -18,15 +19,64 @@
                     </div>
                     <div class="form-group"> 
                         <label for="Description">Beskrivelse</label>
-                        <input type="text" class="form-control" name="description" id="Description" placeholder="Indtast Produktbeskrivelse">
+                    <textarea  class="form-control" name="description" id="Description" placeholder="Indtast Produktbeskrivelse"></textarea>
                     </div>
+
+                    <div class="form-group">
+                        <label for="chooseType">Type</label>
+                        <select class="form-control" id="chooseType" placeholder="Vælg type" onchange="showInputField()">
+                            <option value="" disabled selected>Vælg Type</option>
+                            <option value="addNew">Tilføj ny type!</option>
+                            <option>Tallerken</option>
+                            <option>Krus</option>
+                            <option>Skål</option>
+                           
+                        </select>
+                        <div class="form-group" id="newOptionGroup" style="display:none;">
+                            <input type="text" class="form-control mt-2" id="newOption" placeholder="Indtast ny type">
+                            <button type="button" class="btn btn-dark mt-2"  id="submitNewOption">Submit New Option</button>
+                        </div>
+                    </div>
+                
                     <div class="form-group">
                         <label for="ProductImage">Upload Image</label>
                         <input type="file" class="form-control-file" id="ProductImage" name="image">
                     </div>
+                    <div class="form-group">
+                    <button type="submit" class="btn btn-dark">Tilføj produkt</button>
+                    </div>
+                
                 </div>
             </div>
         </form>
     </div>
 </body>
+<script>
+    function showInputField() {
+        var select = document.getElementById('chooseType');
+        var newOptionGroup = document.getElementById('newOptionGroup');
+
+        // Check if the 'Add a new option' is selected
+        if(select.value === 'addNew') {
+            newOptionGroup.style.display = 'block'; // Show the input field and button
+        } else {
+            newOptionGroup.style.display = 'none';  // Hide the input field and button
+        }
+    }
+
+    document.getElementById('submitNewOption').addEventListener('click', function() {
+        var newOptionValue = document.getElementById('newOption').value;
+        if(newOptionValue) {
+            var select = document.getElementById('chooseType');
+            var option = document.createElement('option');
+            option.value = newOptionValue;
+            option.text = newOptionValue;
+            select.appendChild(option);
+            select.value = newOptionValue;
+            document.getElementById('newOption').value = '';
+            document.getElementById('newOptionGroup').style.display = 'none';
+        }
+    });
+</script>
+
 </html>
