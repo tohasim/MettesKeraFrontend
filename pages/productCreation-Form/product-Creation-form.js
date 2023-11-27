@@ -37,10 +37,10 @@
         var fileInput = document.getElementById('imageUrl');
         var file = fileInput.files[0]; // Get the file from the input
         if (file) {
-            formData.append('image', file); // Append the file to formData
+            formData.append('imageUrl', file); // Append the file to formData
         }
     
-        fetch('/api/products/addProduct', {
+        fetch('http://localhost:8080/api/products/addProduct', {
             method: 'POST',
             body:formData
         })
