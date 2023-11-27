@@ -10,16 +10,16 @@
 
     <div class="container">
         <h1 class="text-center">Tilføj et nyt produkt!</h1>
-        <form enctype="multipart/form-data" class="mt-4">
+        <form id="productForm" enctype="multipart/form-data" class="mt-4">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-6">
                     <div class="form-group">
-                        <label for="Name">Navn</label>
-                        <input type="text" class="form-control" name="name"  id="Name" placeholder="indtast produkt Navn">
+                        <label for="name">Navn</label>
+                        <input type="text" class="form-control" name="name"  id="name" placeholder="indtast produkt Navn">
                     </div>
                     <div class="form-group"> 
-                        <label for="Description">Beskrivelse</label>
-                    <textarea  class="form-control" name="description" id="Description" placeholder="Indtast Produktbeskrivelse"></textarea>
+                        <label for="description">Beskrivelse</label>
+                    <textarea  class="form-control" name="description" id="description" placeholder="Indtast Produktbeskrivelse"></textarea>
                     </div>
 
                     <div class="form-group">
@@ -37,10 +37,13 @@
                             <button type="button" class="btn btn-dark mt-2"  id="submitNewOption">Submit New Option</button>
                         </div>
                     </div>
-                
                     <div class="form-group">
-                        <label for="ProductImage">Upload Image</label>
-                        <input type="file" class="form-control-file" id="ProductImage" name="image">
+                        <label for="price">Pris</label>
+                        <input type="number" class="form-control" name="price" id="price" placeholder="Indtast pris">
+                    </div>
+                    <div class="form-group">
+                        <label for="imageUrl">Upload Image</label>
+                        <input type="file" class="form-control-file" id="imageUrl" name="image">
                     </div>
                     <div class="form-group">
                     <button type="submit" class="btn btn-dark">Tilføj produkt</button>
@@ -50,33 +53,7 @@
             </div>
         </form>
     </div>
+    <script src="product-Creation-form.js"></script>
 </body>
-<script>
-    function showInputField() {
-        var select = document.getElementById('chooseType');
-        var newOptionGroup = document.getElementById('newOptionGroup');
-
-        // Check if the 'Add a new option' is selected
-        if(select.value === 'addNew') {
-            newOptionGroup.style.display = 'block'; // Show the input field and button
-        } else {
-            newOptionGroup.style.display = 'none';  // Hide the input field and button
-        }
-    }
-
-    document.getElementById('submitNewOption').addEventListener('click', function() {
-        var newOptionValue = document.getElementById('newOption').value;
-        if(newOptionValue) {
-            var select = document.getElementById('chooseType');
-            var option = document.createElement('option');
-            option.value = newOptionValue;
-            option.text = newOptionValue;
-            select.appendChild(option);
-            select.value = newOptionValue;
-            document.getElementById('newOption').value = '';
-            document.getElementById('newOptionGroup').style.display = 'none';
-        }
-    });
-</script>
 
 </html>
