@@ -3,7 +3,7 @@ export async function initProductOverviewPage() {
     // Event listener for the button
     const seeProductsButton = document.getElementById("see-products");
   seeProductsButton.addEventListener("click", fetchAndDisplayProducts);
-
+//til Simone
   
 }
 
