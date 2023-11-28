@@ -1,18 +1,12 @@
 export async function initProductOverviewPage() {
-    fetchAndDisplayProducts();
 
     // Event listener for the button
     const seeProductsButton = document.getElementById("see-products");
   seeProductsButton.addEventListener("click", fetchAndDisplayProducts);
-  
-  const seeProductsButton2 = document.getElementById("see-product");
-  seeProductsButton2.addEventListener("click", checkProduct);
 
   
 }
-function checkProduct(){
-  console.log("Hip hop er sagen");
-}
+
 
 // Function to fetch and display products
 async function fetchAndDisplayProducts() {
