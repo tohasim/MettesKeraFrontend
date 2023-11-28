@@ -6,7 +6,7 @@ import {
 
 import { initLogin,toggleLoginStatus,logout } from "./pages/login/login.js"
 import { initSignup } from "./pages/signup/signup.js"
-
+import { initCreationform } from "./pages/productCreation-Form/product-Creation-form.js"
 //If token existed, for example after a refresh, set UI accordingly
 const token = localStorage.getItem("token")
 toggleLoginStatus(token)
@@ -17,6 +17,7 @@ window.addEventListener("load", async () => {
   const templateSignup = await loadTemplate("./pages/signup/signup.html")
   const templateLogin = await loadTemplate("./pages/login/login.html")
   const templateNotFound = await loadTemplate("./pages/notFound/notFound.html")
+  const templateCreationForm = await loadTemplate("./pages/productCreation-Form/product-Creation-Form.html")
 
   adjustForMissingHash()
 
@@ -46,7 +47,10 @@ window.addEventListener("load", async () => {
       "/dropdown-2": () => {
         alert(2)
       },
-      
+      "/create-product": () => {
+        renderTemplate(templateCreationForm, "content")
+        initCreationform()
+      },
       "/signup": () => {
         renderTemplate(templateSignup, "content")
         initSignup()
