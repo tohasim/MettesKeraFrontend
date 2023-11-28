@@ -14,17 +14,17 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="chooseType">Type</label>
-                        <select class="form-control" id="chooseType" placeholder="Vælg type" onchange="showInputField()">
-                            <option value="" disabled selected>Vælg Type</option>
-                            <option value="addNew">Tilføj ny type!</option>
+                        <label for="chooseCategory">Kategori</label>
+                        <select class="form-control" id="chooseCategory" placeholder="Vælg kategori">
+                            <option value="" disabled selected>Vælg kategori</option>
+                            <option value="addNew">Tilføj ny kategori!</option>
                             <option>Tallerken</option>
                             <option>Krus</option>
                             <option>Skål</option>
                            
                         </select>
                         <div class="form-group" id="newOptionGroup" style="display:none;">
-                            <input type="text" class="form-control mt-2" id="newOption" placeholder="Indtast ny type">
+                            <input type="text" class="form-control mt-2" id="newOption" placeholder="Indtast ny kategori">
                             <button type="button" class="btn btn-dark mt-2"  id="submitNewOption">Submit New Option</button>
                         </div>
                     </div>
@@ -33,8 +33,8 @@
                         <input type="number" class="form-control" name="price" id="price" placeholder="Indtast pris">
                     </div>
                     <div class="form-group">
-                        <label for="imageUrl">Upload Image</label>
-                        <input type="file" class="form-control-file" id="imageUrl" name="image">
+                        <label for="images">Upload billede(r)</label>
+                        <input type="file" class="form-control-file" id="images" name="images" multiple>
                     </div>
                     <div class="form-group">
                     <button type="submit" class="btn btn-dark">Tilføj produkt</button>

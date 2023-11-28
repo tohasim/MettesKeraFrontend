@@ -15,7 +15,7 @@ function showInputField() {
         document.getElementById('submitNewOption').addEventListener('click', function() {
             var newOptionValue = document.getElementById('newOption').value;
             if(newOptionValue) {
-                var select = document.getElementById('chooseType');
+                var select = document.getElementById('chooseCategory');
                 var option = document.createElement('option');
                 option.value = newOptionValue;
                 option.text = newOptionValue;
@@ -31,14 +31,16 @@ function showInputField() {
             var formData = new FormData();
             formData.append('name', document.getElementById('name').value);
             formData.append('description', document.getElementById('description').value);
-            formData.append('type', document.getElementById('chooseType').value);
+            formData.append('category', document.getElementById('chooseCategory').value);
             formData.append('price', document.getElementById('price').value);
             // Add the file to formData
-            var fileInput = document.getElementById('imageUrl');
-            var file = fileInput.files[0]; // Get the file from the input
+            var fileInput = document.getElementById("images");
+        for (var i = 0; i < fileInput.files.length; i++) {
+            var file = fileInput.files[i]; // Get the file from the input
             if (file) {
-                formData.append('imageUrl', file); // Append the file to formData
+                formData.append("imageFiles", file); // Append the file to formData
             }
+        }
         
             fetch(API_URL + '/products/addProduct', {
                 method: 'POST',
@@ -53,6 +55,8 @@ function showInputField() {
                 console.error('Error:', error);
             });
         });
-        
+     document.getElementById('chooseCategory').addEventListener("change", showInputField)
+
+    
     }
     
