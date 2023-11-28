@@ -1,8 +1,8 @@
 
     import { API_URL } from "../../settings.js";
-    function showInputField() {
-        var select = document.getElementById('chooseType');
-        var newOptionGroup = document.getElementById('newOptionGroup');
+function showInputField() {
+	var select = document.getElementById("chooseCategory");
+	var newOptionGroup = document.getElementById("newOptionGroup");
 
         // Check if the 'Add a new option' is selected
         if(select.value === 'addNew') {
