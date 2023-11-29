@@ -12,6 +12,7 @@ function showInputField() {
         }
     }
     export async function initCreationform(){
+        fetchCategories();
         document.getElementById('submitNewOption').addEventListener('click', function() {
             var newOptionValue = document.getElementById('newOption').value;
             if(newOptionValue) {
@@ -57,6 +58,64 @@ function showInputField() {
         });
      document.getElementById('chooseCategory').addEventListener("change", showInputField)
 
+     document.getElementById('submitNewOption').addEventListener('click', async function() {
+        var newCategoryName = document.getElementById('newOption').value;
+        if (newCategoryName) {
+            try {
+                const response = await fetch(API_URL + '/categories', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ name: newCategoryName }) // Assuming your backend expects a JSON object with a "name" property
+                });
+    
+                if (response.ok) {
+                    const addedCategory = await response.json();
+                    addCategoryToDropdown(addedCategory); // Function to add the new category to the dropdown
+                    fetchCategories();
+                } else {
+                    // Handle errors, e.g., display an error message
+                }
+            } catch (error) {
+                console.error('Error adding category:', error);
+            }
+        }
+    });
+
     
     }
+    async function fetchCategories(){
+        try{
+            const response = await fetch(API_URL +'/categories');
+            const categories = await response.json();
+            populateCategoryDropdown(categories);
+
+        } catch (error){
+            console.error('Eror fetching categories', error)
+        }
+    }
+    function populateCategoryDropdown(categories){
+        const select = document.getElementById('chooseCategory');
+        categories.forEach(category =>{
+            const option = document.createElement('option');
+            option.value = category.id;
+            option.text = category.name;
+            select.appendChild(option);
+
+        });
+
+
+    }
+    
+    
+    function addCategoryToDropdown(category) {
+        const select = document.getElementById('chooseCategory');
+        const option = document.createElement('option');
+        option.value = category.id;
+        option.text = category.name;
+        select.appendChild(option);
+        select.value = category.id;
+    }
+    
     
