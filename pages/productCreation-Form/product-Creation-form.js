@@ -11,9 +11,9 @@ function showInputField() {
     }
 }
 
-export async function initCreationform(){
+export async function initCreationform() {
     fetchCategories();
-    document.getElementById('submitNewOption').addEventListener('click', async function() {
+    document.getElementById('submitNewOption').addEventListener('click', async function () {
         var newCategoryName = document.getElementById('newOption').value;
         if (newCategoryName) {
             try {
@@ -62,7 +62,7 @@ function populateCategoryDropdown(categories) {
     // Add fetched categories
     categories.forEach(category => {
         const option = document.createElement('option');
-        option.value = category.id;
+        option.value = category.name;
         option.text = category.name;
         select.appendChild(option);
     });
