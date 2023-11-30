@@ -40,7 +40,7 @@ window.addEventListener("load", async () => {
 		.on({
 			//For very simple "templates", you can just insert your HTML directly like below
 			"/": () =>
-				(document.getElementById("content").innerHTML = `
+			(document.getElementById("content").innerHTML = `
         <h2>Home</h2>
         <h5 style="color:darkorange">Make sure to change, colors and layout if you use this for your own projects</h5>
      `),
@@ -53,15 +53,15 @@ window.addEventListener("load", async () => {
 			"/dropdown-2": () => {
 				alert(2);
 			},
-
-			"/product-page": () => {
+			"/product-page/:id": (params) => {
+				const id = params.data.id;
 				renderTemplate(templateProductPage, "content");
-				initProductPage();
+				initProductPage(id);
 			},
-      "/create-product": () => {
-        renderTemplate(templateCreationForm, "content")
-        initCreationform()
-      },
+			"/create-product": () => {
+				renderTemplate(templateCreationForm, "content")
+				initCreationform()
+			},
 			"/signup": () => {
 				renderTemplate(templateSignup, "content");
 				initSignup();
@@ -84,14 +84,14 @@ window.addEventListener("load", async () => {
 window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
 	alert(
 		"Error: " +
-			errorMsg +
-			" Script: " +
-			url +
-			" Line: " +
-			lineNumber +
-			" Column: " +
-			column +
-			" StackTrace: " +
-			errorObj
+		errorMsg +
+		" Script: " +
+		url +
+		" Line: " +
+		lineNumber +
+		" Column: " +
+		column +
+		" StackTrace: " +
+		errorObj
 	);
 };
