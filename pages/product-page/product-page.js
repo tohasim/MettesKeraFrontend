@@ -1,35 +1,22 @@
-import { API_URL } from "../../settings.js";
+import { API_URL, SAS_TOKEN } from "../../settings.js";
 
 export async function initProductPage(id) {
-    setupProductInfo(id);
-    const imageUrls = getImageURLS();
-    setupProductCarousel(imageUrls);
+
+    const info = await fetch(API_URL + "/products/" + id).then((res) => res.json())
+    const images = info.imageUrls
+    setupProductInfo(info);
+    setupProductCarousel(images);
 }
 
-function setupProductInfo(id) {
-    fetch
+async function setupProductInfo(info) {
     document.getElementById("product-info").innerHTML = `
     <div class="col-md-10">
-    <b>Blå Serveringsskål</b>
-    <div style="color: rgb(131, 131, 131)">Skål</div>
-    En flot serveringsskål med kobalt blå glasur. <br />
-    Ideél til middagsbordet, både til hverdag og når det skal være fint.
+    <b>${info.name}</b>
+    <div style="color: rgb(131, 131, 131)">${info.category}</div>
+    ${info.description}
 </div>
-<div class="col"><b>250,- kr</b></div>
+<div class="col"><b>${info.price.toFixed(2)},- kr</b></div>
     `
-}
-
-function getImageURLS() {
-    // Sample image URLs
-    const imageUrls = [
-        "images/product1/Blå Serveringsskål (1).jpg",
-        "images/product1/Blå Serveringsskål (2).jpg",
-        "images/product1/Blå Serveringsskål (3).jpg",
-        "images/product1/Blå Serveringsskål (4).jpg",
-        "images/product1/Blå Serveringsskål (5).jpg",
-        "images/product1/Blå Serveringsskål (6).jpg",
-    ];
-    return imageUrls;
 }
 
 function setupProductCarousel(imageUrls) {
@@ -48,7 +35,7 @@ function setupProductCarousel(imageUrls) {
 			></button>`;
         const isActive = index === 0 ? "active" : ""; // Set the first image as active
         const carouselItem = `<div class="carousel-item ${isActive}">
-                                    <img src="${imageUrl}" class="d-block w-100" alt="Product Image ${index + 1
+                                    <img src="${imageUrl + SAS_TOKEN}" class="d-block w-100" alt="Product Image ${index + 1
             }">
                                   </div>`;
         carouselInner.innerHTML += carouselItem;
