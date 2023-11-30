@@ -7,6 +7,8 @@ import {
   loadTemplate,
 } from "./utils.js";
 
+import { API_URL } from "./settings.js";
+
 import { initLogin, toggleLoginStatus, logout } from "./pages/login/login.js";
 import { initSignup } from "./pages/signup/signup.js";
 import { initProductPage } from "./pages/product-page/product-page.js";
@@ -99,3 +101,37 @@ window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
       errorObj
   );
 };
+
+//search button eventListener
+const searchBtn = document.getElementById("searchBtn");
+const searchInput = document.getElementById("searchInput");
+searchBtn.addEventListener('click', async function() {
+try{
+  const res = await fetch(API_URL + "/products/detailed")
+  const data = await res.json()
+
+ // Get the search query from the input field
+ const searchTerm = searchInput.value.toLowerCase();
+
+ // Filter the data based on the search term
+ const filteredDataName = data.filter(product => {
+     // You can customize this condition based on your data structure
+      
+     return product.name.toLowerCase().includes(searchTerm)
+ });
+
+ console.log("Filtered DataName:", filteredDataName);
+
+  const filteredDataCategory = data.filter(product => {
+       
+      return product.category.toLowerCase().includes(searchTerm) + product.name.toLowerCase().includes(searchTerm) + product.description.toLowerCase().includes(searchTerm)
+  });
+ 
+  console.log("Filtered DataCAtegory:", filteredDataCategory);
+
+} catch{
+  console.log("virker ikke")
+}
+}
+)
+
