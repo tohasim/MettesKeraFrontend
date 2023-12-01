@@ -28,9 +28,12 @@ window.addEventListener("load", async () => {
   const templateOverviewPage = await loadTemplate(
     "./pages/product-overview/product-overview.html"
   );
-	const templateCreationForm = await loadTemplate("./pages/productCreation-Form/product-Creation-Form.html");
+  const templateCreationForm = await loadTemplate(
+    "./pages/productCreation-Form/product-Creation-Form.html"
+  );
 
   adjustForMissingHash();
+
 
   const router = new Navigo("/", { hash: true });
   //Not especially nice, BUT MEANT to simplify things. Make the router global so it can be accessed from all js-files
@@ -50,51 +53,52 @@ window.addEventListener("load", async () => {
         <h2>Home</h2>
         <h5 style="color:darkorange">Make sure to change, colors and layout if you use this for your own projects</h5>
      `),
-			"/dropdown-0": () => {
-				alert(0);
-			},
-			"/dropdown-1": () => {
-				alert(1);
-			},
-			"/dropdown-2": () => {
-				alert(2);
-			},
-			"/product-page/:id": (params) => {
-				const id = params.data.id;
-				renderTemplate(templateProductPage, "content");
-				initProductPage(id);
-			},
+      "/dropdown-0": () => {
+        alert(0);
+      },
+      "/dropdown-1": () => {
+        alert(1);
+      },
+      "/dropdown-2": () => {
+        alert(2);
+      },
+      "/product-page/:id": (params) => {
+        const id = params.data.id;
+        renderTemplate(templateProductPage, "content");
+        initProductPage(id);
+      },
       "/product-overview/:searchTerm": (params) => {
-      //search button eventListener
-        const searchBtn = document.getElementById("searchBtn");
-        const searchInput = document.getElementById("searchInput");
-      // Get the search query from the input field
-        const searchTerm = searchInput.value.toLowerCase();
         const searchTerm = params.data.searchTerm;
         renderTemplate(templateOverviewPage, "content");
         initProductOverviewPage(searchTerm);
       },
-			"/create-product": () => {
-				renderTemplate(templateCreationForm, "content")
-				initCreationform()
-			},
-			"/signup": () => {
-				renderTemplate(templateSignup, "content");
-				initSignup();
-			},
-			"/login": (match) => {
-				renderTemplate(templateLogin, "content");
-				initLogin(match);
-			},
-			"/logout": () => {
-				() => router.navigate("/");
-				logout();
-			},
-		})
-		.notFound(() => {
-			renderTemplate(templateNotFound, "content");
-		})
-		.resolve();
+      "/product-overview/": () => {
+        renderTemplate(templateOverviewPage, "content");
+        initProductOverviewPage();
+      },
+      "/create-product": () => {
+        renderTemplate(templateCreationForm, "content");
+        initCreationform();
+      },
+      "/signup": () => {
+        renderTemplate(templateSignup, "content");
+        initSignup();
+      },
+      "/login": (match) => {
+        renderTemplate(templateLogin, "content");
+        initLogin(match);
+      },
+      "/logout": () => {
+        () => router.navigate("/");
+        logout();
+      },
+    })
+    .notFound(() => {
+      renderTemplate(templateNotFound, "content");
+    })
+    .resolve();
+  
+ 
 });
 
 window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
@@ -112,6 +116,16 @@ window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
   );
 };
 
+ const searchBtn = document.getElementById("searchBtn");
+ 
+ searchBtn.addEventListener("click", function () {
+   const searchInput = document.getElementById("searchInput");
+   // Get the search term from the input field
+   const searchTerm = searchInput.value;
+   console.log("Search term:", searchTerm);
+   // Navigate to the product overview with the search term as a parameter
+   router.navigate(`/product-overview/${encodeURIComponent(searchTerm)}`);
+ });
 
 
 /*
