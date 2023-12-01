@@ -65,11 +65,11 @@ window.addEventListener("load", async () => {
 				initProductPage(id);
 			},
       "/product-overview/:searchTerm": (params) => {
-      //search button eventListener
+        //search button eventListener
         const searchBtn = document.getElementById("searchBtn");
         const searchInput = document.getElementById("searchInput");
       // Get the search query from the input field
-        const searchTerm = searchInput.value.toLowerCase();
+      //  const searchTerm = searchInput.value.toLowerCase();
         const searchTerm = params.data.searchTerm;
         renderTemplate(templateOverviewPage, "content");
         initProductOverviewPage(searchTerm);
