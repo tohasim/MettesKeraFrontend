@@ -13,7 +13,7 @@ import { initLogin, toggleLoginStatus, logout } from "./pages/login/login.js";
 import { initSignup } from "./pages/signup/signup.js";
 import { initProductPage } from "./pages/product-page/product-page.js";
 import { initProductOverviewPage } from "./pages/product-overview/product-overview.js";
-
+import { initCreationform } from "./pages/productCreation-Form/product-Creation-form.js"
 //If token existed, for example after a refresh, set UI accordingly
 const token = localStorage.getItem("token");
 toggleLoginStatus(token);
@@ -28,6 +28,7 @@ window.addEventListener("load", async () => {
   const templateOverviewPage = await loadTemplate(
     "./pages/product-overview/product-overview.html"
   );
+	const templateCreationForm = await loadTemplate("./pages/productCreation-Form/product-Creation-Form.html");
 
   adjustForMissingHash();
 
@@ -49,42 +50,41 @@ window.addEventListener("load", async () => {
         <h2>Home</h2>
         <h5 style="color:darkorange">Make sure to change, colors and layout if you use this for your own projects</h5>
      `),
-
-      "/dropdown-0": () => {
-        alert(0);
-      },
-      "/dropdown-1": () => {
-        alert(1);
-      },
-      "/dropdown-2": () => {
-        alert(2);
-      },
-
-      "/product-page": () => {
-        renderTemplate(templateProductPage, "content");
-        initProductPage();
-      },
-      "/product-overview": () => {
-        renderTemplate(templateOverviewPage, "content");
-        initProductOverviewPage();
-      },
-      "/signup": () => {
-        renderTemplate(templateSignup, "content");
-        initSignup();
-      },
-      "/login": (match) => {
-        renderTemplate(templateLogin, "content");
-        initLogin(match);
-      },
-      "/logout": () => {
-        () => router.navigate("/");
-        logout();
-      },
-    })
-    .notFound(() => {
-      renderTemplate(templateNotFound, "content");
-    })
-    .resolve();
+			"/dropdown-0": () => {
+				alert(0);
+			},
+			"/dropdown-1": () => {
+				alert(1);
+			},
+			"/dropdown-2": () => {
+				alert(2);
+			},
+			"/product-page/:id": (params) => {
+				const id = params.data.id;
+				renderTemplate(templateProductPage, "content");
+				initProductPage(id);
+			},
+			"/create-product": () => {
+				renderTemplate(templateCreationForm, "content")
+				initCreationform()
+			},
+			"/signup": () => {
+				renderTemplate(templateSignup, "content");
+				initSignup();
+			},
+			"/login": (match) => {
+				renderTemplate(templateLogin, "content");
+				initLogin(match);
+			},
+			"/logout": () => {
+				() => router.navigate("/");
+				logout();
+			},
+		})
+		.notFound(() => {
+			renderTemplate(templateNotFound, "content");
+		})
+		.resolve();
 });
 
 window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {

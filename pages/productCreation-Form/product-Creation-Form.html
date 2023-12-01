@@ -1,0 +1,48 @@
+<template>
+    <div class="container">
+        <h1 class="text-center">Tilføj et nyt produkt!</h1>
+        <form id="productForm" enctype="multipart/form-data" class="mt-4">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-6">
+                    <div class="form-group">
+                        <label for="name">Navn</label>
+                        <input type="text" class="form-control" name="name"  id="name" placeholder="indtast produkt Navn">
+                    </div>
+                    <div class="form-group"> 
+                        <label for="description">Beskrivelse</label>
+                    <textarea  class="form-control" name="description" id="description" placeholder="Indtast Produktbeskrivelse"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="chooseCategory">Kategori</label>
+                        <select class="form-control" id="chooseCategory" placeholder="Vælg kategori">
+                            <option value="" disabled selected>Vælg kategori</option>
+                            <option value="addNew">Tilføj ny kategori!</option>
+                            
+                           
+                        </select>
+                        <div class="form-group" id="newOptionGroup" style="display:none;">
+                            <input type="text" class="form-control mt-2" id="newOption" placeholder="Indtast ny kategori">
+                            <button type="button" class="btn btn-dark mt-2"  id="submitNewOption">Submit New Option</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Pris</label>
+                        <input type="number" class="form-control" name="price" id="price" placeholder="Indtast pris">
+                    </div>
+                    <div class="form-group">
+                        <label for="images">Upload billede(r)</label>
+                        <input type="file" class="form-control-file" id="images" name="images" multiple>
+                    </div>
+                    <div class="form-group">
+                    <button type="submit" class="btn btn-dark">Tilføj produkt</button>
+                    </div>
+                
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="product-Creation-form.js"></script>
+</body>
+
+</html>

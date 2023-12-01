@@ -1,4 +1,29 @@
 <template>
 	<h2>Product Overview</h2>
-	<div class="row" id="product-container"></div>
+	<div class="row" id="product-container">
+		<div class="col">
+			<div id="imageCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="10000">
+				<!-- Indicators/dots -->
+				<div class="carousel-indicators"></div>
+				<!-- Images should be injected here -->
+				<div class="carousel-inner"></div>
+
+				<!-- Navigation buttons -->
+				<button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel"
+					data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#imageCarousel"
+					data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<div class="row" id="product-info">
+			</div>
+		</div>
+	</div>
 </template>
