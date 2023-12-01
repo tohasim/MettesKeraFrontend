@@ -102,7 +102,7 @@ window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
   );
 };
 
-/*
+
 
 //search button eventListener
 const searchBtn = document.getElementById("searchBtn");
@@ -136,7 +136,8 @@ try{
 }
 }
 )
-*/
+
+/*
 const searchBtn = document.getElementById("searchBtn");
 const searchInput = document.getElementById("searchInput");
 
@@ -164,4 +165,4 @@ searchBtn.addEventListener('click', async function() {
         console.log("An error occurred:", error);
     }
 });
-
+*/
