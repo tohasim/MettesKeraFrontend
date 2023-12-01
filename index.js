@@ -64,6 +64,16 @@ window.addEventListener("load", async () => {
 				renderTemplate(templateProductPage, "content");
 				initProductPage(id);
 			},
+      "/product-overview/:searchTerm": (params) => {
+      //search button eventListener
+        const searchBtn = document.getElementById("searchBtn");
+        const searchInput = document.getElementById("searchInput");
+      // Get the search query from the input field
+        const searchTerm = searchInput.value.toLowerCase();
+        const searchTerm = params.data.searchTerm;
+        renderTemplate(templateOverviewPage, "content");
+        initProductOverviewPage(searchTerm);
+      },
 			"/create-product": () => {
 				renderTemplate(templateCreationForm, "content")
 				initCreationform()
@@ -103,39 +113,6 @@ window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
 };
 
 
-
-//search button eventListener
-const searchBtn = document.getElementById("searchBtn");
-const searchInput = document.getElementById("searchInput");
-searchBtn.addEventListener('click', async function() {
-try{
-  const res = await fetch(API_URL + "/products/detailed")
-  const data = await res.json()
-
- // Get the search query from the input field
- const searchTerm = searchInput.value.toLowerCase();
-
- // Filter the data based on the search term
- const filteredDataName = data.filter(product => {
-     // You can customize this condition based on your data structure
-      
-     return product.name.toLowerCase().includes(searchTerm)
- });
-
- console.log("Filtered DataName:", filteredDataName);
-
-  const filteredDataCategory = data.filter(product => {
-       
-      return product.category.toLowerCase().includes(searchTerm) + product.name.toLowerCase().includes(searchTerm) + product.description.toLowerCase().includes(searchTerm)
-  });
- 
-  console.log("Filtered DataCAtegory:", filteredDataCategory);
-
-} catch{
-  console.log("virker ikke")
-}
-}
-)
 
 /*
 const searchBtn = document.getElementById("searchBtn");
