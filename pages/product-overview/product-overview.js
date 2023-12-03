@@ -3,8 +3,6 @@ import { API_URL } from "../../settings.js";
 export async function initProductOverviewPage(searchTerm) {
   console.log("Search term on product overview:", searchTerm);
 
-  // const seeProductsButton = document.getElementById("see-products");
-  // seeProductsButton.addEventListener("click", () => fetchAndDisplayProducts());
 
   if (searchTerm) {
     const searchResults = await getSearchItems(searchTerm);
@@ -33,11 +31,11 @@ export async function initProductOverviewPage(searchTerm) {
 }
 
 async function fetchAndDisplayProducts(products = null) {
-  console.log("Fetching products...");
+  //console.log("Fetching products...");
 
   if (!products) {
     try {
-      const response = await fetch("http://localhost:8080/api/products");
+      const response = await fetch(API_URL+"/products");
       products = await response.json();
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -45,10 +43,6 @@ async function fetchAndDisplayProducts(products = null) {
     }
   }
   const productList = document.getElementById("productList");
-  if (!productList) {
-    console.error("Error: ProductList element not found.");
-    return;
-  }
 
   productList.innerHTML = ""; // Clear previous content
   productList.classList.add("row"); // Add Bootstrap row class for grid layout
