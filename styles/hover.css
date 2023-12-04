@@ -1,10 +1,10 @@
 
 
+.navbar-nav .nav-item.dropdown:hover .nav-link.dropdown-toggle {
+    background-color: rgb(156, 213, 213);
+}
 
-.nav-link.dropdown-toggle:hover{
-    background-color: lightcyan;}
-
-.dropdown-mwnu .dropdown-item:hover{
+.navbar-nav .nav-item.dropdown:hover .dropdown-menu .dropdown-item:hover{
     background-color: peachpuff;
 }
 
