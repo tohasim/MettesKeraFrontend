@@ -30,7 +30,7 @@ export async function initProductOverviewPage(searchTerm) {
   }
 }
 
-async function fetchAndDisplayProducts(products = null) {
+async function fetchAndDisplayProducts(products) {
   //console.log("Fetching products...");
 
   if (!products) {
