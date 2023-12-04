@@ -36,12 +36,9 @@ function setupProductCarousel(imageUrls) {
 			></button>`;
 		const isActive = index === 0 ? "active" : ""; // Set the first image as active
 		const carouselItem = `<div class="carousel-item ${isActive}">
-                                    <img src="${
-																			imageUrl + SAS_TOKEN
-																		}" class="d-block w-100" alt="Product Image ${
-			index + 1
-		}">
-                                  </div>`;
+                          <img src="${imageUrl + SAS_TOKEN}" class="d-block w-100 carousel-image" alt="Product Image ${index + 1}">
+                      </div>`;
+
 		carouselInner.innerHTML += carouselItem;
 		indicatorsInner.innerHTML += carouselIndicatorItem;
 	});

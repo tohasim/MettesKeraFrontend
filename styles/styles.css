@@ -18,4 +18,9 @@ Styles used for labels and input fields in boot strap columns
   width:100%;
   border: 1px solid lightgray;
 }
+.carousel-image {
+  width: 100%;      /* Full width of the container */
+  height: 500px;    /* Fixed height */
+  object-fit: cover; /* Cover the entire area of the container */
+}
 
