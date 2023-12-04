@@ -1,4 +1,4 @@
-import { API_URL } from "../../settings.js";
+import { API_URL, SAS_TOKEN } from "../../settings.js";
 
 export async function initProductOverviewPage(searchTerm) {
   console.log("Search term on product overview:", searchTerm);
@@ -50,10 +50,10 @@ async function fetchAndDisplayProducts(products) {
   products.forEach((product) => {
     const productDiv = document.createElement("div");
     productDiv.classList.add("col-md-4", "mb-3"); // Bootstrap grid column and margin-bottom
-
+    console.log(product.imageUrl);
     productDiv.innerHTML = `
         <div class="card">
-          <img src="${product.imageUrl}" class="card-img-top" alt="${
+          <img src="${product.imageUrls[0] + SAS_TOKEN}" class="card-img-top" alt="${
       product.name
     }" style="width:100%; height:auto;">
           <div class="card-body">
