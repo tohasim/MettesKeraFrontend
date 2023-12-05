@@ -1,10 +1,19 @@
+
 body {
-    background-color: #25591f;
+    margin: 0;
+    padding: 0;
     background: 
-    url();
-
-
+        url('/images/KeramikEksemple.jpg') no-repeat,
+        url('/images/KeramikEksemple.jpg') no-repeat;
+    background-size: cover;
 }
+/*
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #25591f;
+}
+*/
 .transparent-box {
     position: fixed;
     top: 0;
