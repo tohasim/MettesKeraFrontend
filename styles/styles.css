@@ -1,4 +1,4 @@
-
+@import url(/styles/background.css);
 /*
 
 Styles used for labels and input fields in boot strap columns
@@ -16,7 +16,7 @@ Styles used for labels and input fields in boot strap columns
   padding: 0.35em;
   border-radius: 4px;
   width:100%;
-  border: 1px solid lightgray;
+  border: 1px solid red;
 }
 .carousel-image {
   width: 100%;      /* Full width of the container */
