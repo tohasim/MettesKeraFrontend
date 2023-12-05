@@ -19,6 +19,7 @@ const token = localStorage.getItem("token");
 toggleLoginStatus(token);
 
 window.addEventListener("load", async () => {
+  populateCategories()
   const templateSignup = await loadTemplate("./pages/signup/signup.html");
   const templateLogin = await loadTemplate("./pages/login/login.html");
   const templateNotFound = await loadTemplate("./pages/notFound/notFound.html");
@@ -49,18 +50,9 @@ window.addEventListener("load", async () => {
       //For very simple "templates", you can just insert your HTML directly like below
       "/": () =>
         (document.getElementById("content").innerHTML = `
-        <h2>Home</h2>
-        <h5 style="color:darkorange">Make sure to change, colors and layout if you use this for your own projects</h5>
+        <h2>Mettes keramik shop</h2>
+        <h5 style="color:red">Husk at sætte informationer om Mette ind her</h5>
      `),
-      "/dropdown-0": () => {
-        alert(0);
-      },
-      "/dropdown-1": () => {
-        alert(1);
-      },
-      "/dropdown-2": () => {
-        alert(2);
-      },
       "/product-page/:id": (params) => {
         const id = params.data.id;
         renderTemplate(templateProductPage, "content");
@@ -140,4 +132,14 @@ function adjustNavbarOnScroll() {
       .querySelector(".container-fluid")
       .classList.add("container-fluid-shrink");
   }
+}
+async function populateCategories() {
+  const categoryholder = document.getElementById("category-holder")
+  const categories = await fetch(API_URL + "/categories").then(res => res.json())
+  categories.forEach(element => {
+    categoryholder.innerHTML+=`<li><a class="dropdown-item" href="/${element.name} " style="color:darkgray" data-navigo>${element.name}</a></li>
+    `
+
+  });
+
 }

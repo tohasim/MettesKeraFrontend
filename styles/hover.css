@@ -1,0 +1,19 @@
+
+
+.navbar-nav .nav-item.dropdown:hover .nav-link.dropdown-toggle {
+    background-color: rgb(156, 213, 213);
+  
+}
+
+.navbar-nav .nav-item.dropdown:hover .dropdown-menu .dropdown-item:hover{
+    background-color: peachpuff;
+    
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; /* remove the gap so it doesn't close */
+}
+
+
+
