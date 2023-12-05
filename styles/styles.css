@@ -1,9 +1,10 @@
-
+@import url(/styles/background.css);
 /*
 
 Styles used for labels and input fields in boot strap columns
 
 */
+@import url("Hero.css");
 
 .row label {
   margin-top: 1.5em;
@@ -16,7 +17,7 @@ Styles used for labels and input fields in boot strap columns
   padding: 0.35em;
   border-radius: 4px;
   width:100%;
-  border: 1px solid lightgray;
+  border: 1px solid red;
 }
 .carousel-image {
   width: 100%;      /* Full width of the container */
@@ -24,3 +25,46 @@ Styles used for labels and input fields in boot strap columns
   object-fit: cover; /* Cover the entire area of the container */
 }
 
+/* Adjust the navbar padding */
+.navbar {
+  padding-top: 5rem; /* Initial top padding */
+  padding-bottom: 5rem; /* Initial bottom padding */
+  transition: padding 0.3s;
+}
+
+.navbar-shrink {
+  padding-top: 0.5rem; /* Reduced top padding when scrolled */
+  padding-bottom: 0.5rem; /* Reduced bottom padding when scrolled */
+}
+
+/* Position the navbar logo container */
+.navbar-logo {
+  position: absolute;
+  top: -100px; /* Adjust to position the logo above the navbar */
+  left: 50%; /* Center the logo container horizontally */
+  transform: translateX(-50%); /* Align the center of the logo with its container */
+  transition: top 0.3s, left 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+/* Style the logo image */
+.navbar-logo img {
+  display: block; /* Ensures the image is block-level */
+  width: 150px; /* Initial logo size */
+  transition: width 0.3s; /* Smooth transition for size change */
+}
+
+/* Adjustments when navbar shrinks */
+.navbar-shrink .navbar-logo {
+  top: 10px; /* Position the logo inside the navbar */
+  left: 10px; /* Move logo to the left corner */
+  transform: translateX(0); /* Reset transform to align the logo to the left corner */
+}
+
+.navbar-shrink .navbar-logo img {
+  width: 75px; /* Smaller size when scrolled */
+}
+
+/* Ensure the navbar container is positioned relatively */
+.navbar .container-fluid {
+  position: relative;
+}

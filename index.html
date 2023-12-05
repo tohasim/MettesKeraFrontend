@@ -12,6 +12,7 @@
   
   <link rel="canonical" href="https://getbootstrap.com/docs/5.0/components/navbar/">
   <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="stylesheet" href="styles/background.css"/>
   <link rel="stylesheet" href="styles/hover.css"/>
     
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"></script>
@@ -25,9 +26,10 @@
 
   
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-size:larger">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" style="font-size:larger">
+    
     <div class="container-fluid">
-      <a class="navbar-brand" href="#" style="color:lightcoral">Brand-txt</a>
+      <a class="navbar-logo nav-item active" href="#" ><img src="images/Logo.png" style="" alt="logo"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -71,6 +73,11 @@
 
   <div id="content" style="margin:5%;margin-top:3%;"></div>
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-sr5s2Ck5PJKJ8NHAdr7dQoN82Ei4mOWpXbaDIbJcdaazlMHavN6DqU0Hb9zomlXx"
+        crossorigin="anonymous"></script>
+  <div class="transparent-box"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-sr5s2Ck5PJKJ8NHAdr7dQoN82Ei4mOWpXbaDIbJcdaazlMHavN6DqU0Hb9zomlXx"
