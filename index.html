@@ -21,7 +21,9 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" style="font-size:larger">
     
     <div class="container-fluid">
-      <a class="navbar-logo nav-item active" href="#" ><img src="images/Logo.png" style="" alt="logo"></a>
+      <a class="navbar-brand" href="#">
+        <img src="images/Logo-removebg-preview.png" alt="logo">
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -32,7 +34,10 @@
             <a class="nav-link" href="/" data-navigo>Home</a>
           </li>
           <li>
-            <input type="text" id="searchInput"> <button id="searchBtn">Søg</button>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" id="searchInput" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" id="searchBtn" type="submit">Search</button>
+            </form>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
