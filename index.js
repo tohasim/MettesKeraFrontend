@@ -97,7 +97,7 @@ window.addEventListener("load", async () => {
       renderTemplate(templateNotFound, "content");
     })
     .resolve();
-  
+    window.addEventListener('scroll', adjustNavbarOnScroll);
  
 });
 
@@ -127,33 +127,11 @@ window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
    router.navigate(`/product-overview/${encodeURIComponent(searchTerm)}`);
  });
 
-
-/*
-const searchBtn = document.getElementById("searchBtn");
-const searchInput = document.getElementById("searchInput");
-
-searchBtn.addEventListener('click', async function() {
-    try {
-        const res = await fetch(API_URL + "/products/detailed");
-        const data = await res.json();
-
-        // Get the search query from the input field
-        const searchTerm = searchInput.value.toLowerCase();
-
-        // Filter the data based on the search term
-        const filteredData = data.filter(product => {
-            // Customize this condition based on your data structure
-            const nameMatch = product.name.toLowerCase().includes(searchTerm);
-            const categoryMatch = product.category.toLowerCase().includes(searchTerm);
-            const descriptionMatch = product.description.toLowerCase().includes(searchTerm);
-
-            // Return true if any of the conditions match
-            return nameMatch || categoryMatch || descriptionMatch;
-        });
-
-        console.log("Filtered Data:", filteredData);
-    } catch (error) {
-        console.log("An error occurred:", error);
-    }
-});
-*/
+ function adjustNavbarOnScroll() {
+  if (window.scrollY > 80) {
+      document.querySelector('.navbar').classList.add('navbar-shrink');
+      console.log("Scroll worked")
+  } else {
+      document.querySelector('.navbar').classList.remove('navbar-shrink');
+  }
+}
