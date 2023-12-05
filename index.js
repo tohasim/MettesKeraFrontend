@@ -50,18 +50,9 @@ window.addEventListener("load", async () => {
       //For very simple "templates", you can just insert your HTML directly like below
       "/": () =>
         (document.getElementById("content").innerHTML = `
-        <h2>Home</h2>
-        <h5 style="color:darkorange">Make sure to change, colors and layout if you use this for your own projects</h5>
+        <h2>Mettes keramik shop</h2>
+        <h5 style="color:red">Husk at sætte informationer om Mette ind her</h5>
      `),
-      "/dropdown-0": () => {
-        alert(0);
-      },
-      "/dropdown-1": () => {
-        alert(1);
-      },
-      "/dropdown-2": () => {
-        alert(2);
-      },
       "/product-page/:id": (params) => {
         const id = params.data.id;
         renderTemplate(templateProductPage, "content");
