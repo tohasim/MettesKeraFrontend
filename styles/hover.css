@@ -1,0 +1,10 @@
+
+
+.navbar-nav .nav-item.dropdown:hover .nav-link.dropdown-toggle {
+    background-color: rgb(156, 213, 213);
+}
+
+.navbar-nav .nav-item.dropdown:hover .dropdown-menu .dropdown-item:hover{
+    background-color: peachpuff;
+}
+
