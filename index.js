@@ -13,7 +13,7 @@ import { initLogin, toggleLoginStatus, logout } from "./pages/login/login.js";
 import { initSignup } from "./pages/signup/signup.js";
 import { initProductPage } from "./pages/product-page/product-page.js";
 import { initProductOverviewPage } from "./pages/product-overview/product-overview.js";
-import { initCreationform } from "./pages/productCreation-Form/product-Creation-form.js"
+import { initCreationform } from "./pages/productCreation-Form/product-Creation-form.js";
 //If token existed, for example after a refresh, set UI accordingly
 const token = localStorage.getItem("token");
 toggleLoginStatus(token);
@@ -33,7 +33,6 @@ window.addEventListener("load", async () => {
   );
 
   adjustForMissingHash();
-
 
   const router = new Navigo("/", { hash: true });
   //Not especially nice, BUT MEANT to simplify things. Make the router global so it can be accessed from all js-files
@@ -67,12 +66,14 @@ window.addEventListener("load", async () => {
         renderTemplate(templateProductPage, "content");
         initProductPage(id);
       },
-      "/product-overview/:searchTerm": (params) => { //here the searchterm is required
+      "/product-overview/:searchTerm": (params) => {
+        //here the searchterm is required
         const searchTerm = params.data.searchTerm;
         renderTemplate(templateOverviewPage, "content");
         initProductOverviewPage(searchTerm);
       },
-      "/product-overview/": () => { //The reason for having two product-overview is to avoid the "required" of the params on top
+      "/product-overview/": () => {
+        //The reason for having two product-overview is to avoid the "required" of the params on top
         renderTemplate(templateOverviewPage, "content");
         initProductOverviewPage();
       },
@@ -97,8 +98,7 @@ window.addEventListener("load", async () => {
       renderTemplate(templateNotFound, "content");
     })
     .resolve();
-    window.addEventListener('scroll', adjustNavbarOnScroll);
- 
+  window.addEventListener("scroll", adjustNavbarOnScroll);
 });
 
 window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
@@ -116,22 +116,28 @@ window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
   );
 };
 
- const searchBtn = document.getElementById("searchBtn");
- 
- searchBtn.addEventListener("click", function () {
-   const searchInput = document.getElementById("searchInput");
-   // Get the search term from the input field
-   const searchTerm = searchInput.value;
-   console.log("Search term:", searchTerm);
-   // Navigate to the product overview with the search term as a parameter
-   router.navigate(`/product-overview/${encodeURIComponent(searchTerm)}`);
- });
+const searchBtn = document.getElementById("searchBtn");
 
- function adjustNavbarOnScroll() {
-  if (window.scrollY > 80) {
-      document.querySelector('.navbar').classList.add('navbar-shrink');
-      console.log("Scroll worked")
-  } else {
-      document.querySelector('.navbar').classList.remove('navbar-shrink');
+searchBtn.addEventListener("click", function () {
+  const searchInput = document.getElementById("searchInput");
+  // Get the search term from the input field
+  const searchTerm = searchInput.value;
+  console.log("Search term:", searchTerm);
+  // Navigate to the product overview with the search term as a parameter
+  router.navigate(`/product-overview/${encodeURIComponent(searchTerm)}`);
+});
+
+function adjustNavbarOnScroll() {
+  if (window.scrollY === 0) {
+    document.querySelector(".navbar").classList.remove("navbar-shrink");
+    document
+      .querySelector(".container-fluid")
+      .classList.remove("container-fluid-shrink");
+  }
+   else if (window.scrollY > 120) {
+    document.querySelector(".navbar").classList.add("navbar-shrink");
+    document
+      .querySelector(".container-fluid")
+      .classList.add("container-fluid-shrink");
   }
 }
