@@ -19,6 +19,7 @@ const token = localStorage.getItem("token");
 toggleLoginStatus(token);
 
 window.addEventListener("load", async () => {
+  populateCategories()
   const templateSignup = await loadTemplate("./pages/signup/signup.html");
   const templateLogin = await loadTemplate("./pages/login/login.html");
   const templateNotFound = await loadTemplate("./pages/notFound/notFound.html");
@@ -125,4 +126,14 @@ window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
   } else {
       document.querySelector('.navbar').classList.remove('navbar-shrink');
   }
+}
+async function populateCategories() {
+  const categoryholder = document.getElementById("category-holder")
+  const categories = await fetch(API_URL + "/categories").then(res => res.json())
+  categories.forEach(element => {
+    categoryholder.innerHTML+=`<li><a class="dropdown-item" href="/${element.name} " style="color:darkgray" data-navigo>${element.name}</a></li>
+    `
+
+  });
+
 }
