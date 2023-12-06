@@ -5,16 +5,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>METTES KERA</title>
-  
+
   <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  
+
   <link rel="canonical" href="https://getbootstrap.com/docs/5.0/components/navbar/">
   <link rel="stylesheet" href="styles/styles.css" />
-  <link rel="stylesheet" href="styles/background.css"/>
-  <link rel="stylesheet" href="styles/hover.css"/>
-    
+  <link rel="stylesheet" href="styles/background.css" />
+  <link rel="stylesheet" href="styles/hover.css" />
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"></script>
   <script src="index.js" type="module"></script>
   <script src="hover.js"></script>
@@ -24,12 +24,14 @@
 
 <body style="font-family: 'Quicksand'">
 
-  
+
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" style="font-size:larger">
-    
+
     <div class="container-fluid">
-      <a class="navbar-logo nav-item active" href="#" ><img src="images/Logo.png" style="" alt="logo"></a>
+      <a class="navbar-brand" href="#">
+        <img src="images/Logo-removebg-preview.png" alt="logo">
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -37,17 +39,16 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul id="menu" class="navbar-nav">
           <li>
-            <input type="text" id="searchInput"> <button id="searchBtn">Søg</button>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" id="searchInput" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" id="searchBtn" type="submit">Search</button>
+            </form>
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" style="color:rgb(144, 114, 60)" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">KATEGORI</a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="/Gryder" style="color:darkgray" data-navigo>Gryder</a></li>
-              <li><a class="dropdown-item" href="/Kander" style="color:darkgray" data-navigo>Kander</a></li>
-              <li><a class="dropdown-item" href="/Kopper" style="color:darkgray" data-navigo>Kopper</a></li>
-              <li><a class="dropdown-item" href="/Skåle" style="color:darkgray" data-navigo>Skåle</a></li>
+            <a class="nav-link dropdown-toggle" style="color:rgb(144, 114, 60)" href="#" id="navbarDropdown"
+              role="button" data-bs-toggle="dropdown" aria-expanded="false">KATEGORI</a>
+            <ul class="dropdown-menu" id="category-holder" aria-labelledby="navbarDropdown">
             </ul>
           </li>
           <li class="nav-item" id="creation-form-container">
@@ -68,21 +69,20 @@
     </div>
   </nav>
 
-  <div id="content" style="margin:5%;margin-top:3%;"></div>
+  <div id="content" class="content"></div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-sr5s2Ck5PJKJ8NHAdr7dQoN82Ei4mOWpXbaDIbJcdaazlMHavN6DqU0Hb9zomlXx"
-        crossorigin="anonymous"></script>
+    integrity="sha384-sr5s2Ck5PJKJ8NHAdr7dQoN82Ei4mOWpXbaDIbJcdaazlMHavN6DqU0Hb9zomlXx"
+    crossorigin="anonymous"></script>
   <div class="transparent-box"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-sr5s2Ck5PJKJ8NHAdr7dQoN82Ei4mOWpXbaDIbJcdaazlMHavN6DqU0Hb9zomlXx"
-        crossorigin="anonymous"></script>
+    integrity="sha384-sr5s2Ck5PJKJ8NHAdr7dQoN82Ei4mOWpXbaDIbJcdaazlMHavN6DqU0Hb9zomlXx"
+    crossorigin="anonymous"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
-    crossorigin="anonymous">
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
 </body>
 
