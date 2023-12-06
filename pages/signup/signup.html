@@ -1,20 +1,28 @@
 <template>
-  <h3 style="margin-top: 0.5em;min-height: 1em;">Opret bruger</h3>
+  <h3 class="row justify-content-center" style="margin-top: 0.5em;min-height: 1em;">Opret bruger</h3>
   <hr />
   <div>
-    <form id="form" style="max-width: 900px;">
-      <div class="row">
-          <input id="input-username" placeholder="brugernavn" required>
-          <input id="input-email" placeholder="email" required>
-          <input type=password id="input-password" placeholder="adgangskode" required>
+    <form id="form" class="mt-4">
+      <h1 class="row justify-content-center">
+      <div class="col-12 col-md-6">
+        <div class="form-group" style="margin-top:1em;">
+          <input class="form-control" id="input-username"  placeholder="Brugernavn" required>
+        </div>
+        <div class="form-group" style="margin-top:1em;">
+          <input  class="form-control"  id="input-email" placeholder="Email" required>
+        </div>
+        <div class="form-group" style="margin-top:1em;">
+          <input  class="form-control" type=password id="input-password" placeholder="Adgangskode" required>
+        </div>
+        <!-- <div class="row">
+         <p id="status" style="min-height: 1em;margin-top:0.5em"> </p>
+        </div> -->
+        
+        <div class="form-group row width" style="margin-top:1.5em;">
+          <button id="btn-signup" class="btn btn-dark">Opret</button>
+        </div>
       </div>
-      
-        <div class="row">
-          <p id="status" style="min-height: 1em;margin-top:0.5em"> </p>
-        </div>
-        <div class="row" style="margin-top:2em;">
-          <button id="btn-signup" class="btn-primary">Register</button>
-        </div>
+      </h1>
     </form>
   </div>
 </template>
