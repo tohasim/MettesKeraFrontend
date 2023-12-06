@@ -58,7 +58,7 @@ async function fetchAndDisplayProducts(products) {
     }" style="width:100%; height:auto;">
           <div class="card-body">
             <h5 class="card-title">${product.name}</h5>
-            <p class="card-text">Price: $${product.price.toFixed(2)}</p>
+            <p class="card-text">Pris: ${product.price.toFixed(0)}.- kr</p>
           </div>
         </div>
       `;
