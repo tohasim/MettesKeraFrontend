@@ -63,10 +63,6 @@ Styles used for labels and input fields in boot strap columns
   /* Smaller size when scrolled */
 }
 
-/* Ensure the navbar container is positioned relatively */
-.navbar .container-fluid {
-  /* position: re; */
-}
 
 .container-fluid {
   display: flex;
