@@ -49,7 +49,7 @@ window.addEventListener("load", async () => {
     .on({
       //For very simple "templates", you can just insert your HTML directly like below
       "/": () =>
-        (document.getElementById("content").innerHTML = `
+      (document.getElementById("content").innerHTML = `
         <h2>Mettes keramik shop</h2>
         <h5 style="color:red">Husk at sætte informationer om Mette ind her</h5>
      `),
@@ -96,15 +96,15 @@ window.addEventListener("load", async () => {
 window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
   alert(
     "Error: " +
-      errorMsg +
-      " Script: " +
-      url +
-      " Line: " +
-      lineNumber +
-      " Column: " +
-      column +
-      " StackTrace: " +
-      errorObj
+    errorMsg +
+    " Script: " +
+    url +
+    " Line: " +
+    lineNumber +
+    " Column: " +
+    column +
+    " StackTrace: " +
+    errorObj
   );
 };
 
@@ -126,7 +126,7 @@ function adjustNavbarOnScroll() {
       .querySelector(".container-fluid")
       .classList.remove("container-fluid-shrink");
   }
-   else if (window.scrollY > 120) {
+  else if (window.scrollY > 90) {
     document.querySelector(".navbar").classList.add("navbar-shrink");
     document
       .querySelector(".container-fluid")
@@ -137,7 +137,7 @@ async function populateCategories() {
   const categoryholder = document.getElementById("category-holder")
   const categories = await fetch(API_URL + "/categories").then(res => res.json())
   categories.forEach(element => {
-    categoryholder.innerHTML+=`<li><a class="dropdown-item" href="/${element.name} " style="color:darkgray" data-navigo>${element.name}</a></li>
+    categoryholder.innerHTML += `<li><a class="dropdown-item" href="/${element.name} " style="color:darkgray" data-navigo>${element.name}</a></li>
     `
 
   });

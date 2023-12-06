@@ -1,10 +1,13 @@
-
 /*
 
 Styles used for labels and input fields in boot strap columns
 
 */
 @import url("Hero.css");
+
+* {
+  box-sizing: border-box;
+}
 
 .row label {
   margin-top: 1.5em;
@@ -16,28 +19,48 @@ Styles used for labels and input fields in boot strap columns
   margin-top: 1em;
   padding: 0.35em;
   border-radius: 4px;
-  width:100%;
+  width: 100%;
   border: 1px solid lightgray;
 }
+
+.content {
+  margin: auto;
+  margin-top: 15%;
+  max-width: 80%;
+}
+
 .carousel-image {
-  width: 100%;      /* Full width of the container */
-  height: 500px;    /* Fixed height */
-  object-fit: cover; /* Cover the entire area of the container */
+  width: 100%;
+  /* Full width of the container */
+  height: 500px;
+  /* Fixed height */
+  object-fit: cover;
+  /* Cover the entire area of the container */
+}
+
+.navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
 }
 
 
 /* Style the logo image */
 .navbar-brand img {
-  display: block; /* Ensures the image is block-level */
-  width: 125px; /* Initial logo size */
-  transition: width 0.5s ease-in-out; /* Smooth transition for size change */
+  display: block;
+  /* Ensures the image is block-level */
+  width: 90px;
+  /* Initial logo size */
+  transition: width 0.5s ease-in-out;
+  /* Smooth transition for size change */
 
 }
 
 
 
 .navbar-shrink .navbar-brand img {
-  width: 50px; /* Smaller size when scrolled */
+  width: 50px;
+  /* Smaller size when scrolled */
 }
 
 /* Ensure the navbar container is positioned relatively */
@@ -45,12 +68,12 @@ Styles used for labels and input fields in boot strap columns
   /* position: re; */
 }
 
-.container-fluid{
+.container-fluid {
   display: flex;
   flex-direction: column;
   transition: flex-direction 0.5s ease-in-out;
 }
 
-.container-fluid-shrink{
+.container-fluid-shrink {
   flex-direction: row;
 }
