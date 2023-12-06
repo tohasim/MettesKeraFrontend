@@ -24,7 +24,7 @@ async function signup(evt) {
   }
   try {
   await fetch(URL, options).then(handleHttpErrors)
-  window.router.navigate("/login?msg=" + "You have successfully signed up. Please login")
+  window.router.navigate("/login?msg=" + "Du er nu oprettet som bruger, log venligst ind.")
   } catch (err) {
     //You should present user with error message
     console.error(err.message);
