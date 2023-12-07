@@ -47,6 +47,17 @@ export function logout() {
 
 export function toggleLoginStatus(loggedIn) {
   //Hide or show all menu-links depending on login status
+  const adminListItems = document.querySelectorAll(".admin-only")
+  let isAdmin = false
+  let isUser = false
+  //You can add .getitem and change [] to () and it would still work in the if statement below.
+  if (localStorage["roles"]){ 
+    isAdmin = localStorage.getItem("roles").includes("admin")
+    isUser = localStorage.getItem("roles").includes("user") 
+  }
+  for(let i=0; i < adminListItems.length; i++ ){
+    adminListItems[i].style.display = isAdmin ? "block" : "none"
+  }
   document.getElementById("login-container").style.display = loggedIn ? "none" : "block"
   document.getElementById("logout-container").style.display = loggedIn ? "block" : "none"
   document.getElementById("signup-container").style.display = loggedIn ? "none" : "block"
