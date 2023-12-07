@@ -1,22 +1,12 @@
-
 body {
-    margin: 0;
-    padding: 0;
-    background: 
-        url('/images/KeramikEksemple.jpg') no-repeat,
-        url('/images/KeramikEksemple.jpg') no-repeat;
-    background-size: cover;
+	margin: 0;
+	padding: 0;
+	background: url("/images/fxg52upc.bmp") repeat;
+	background-size: cover;
 }
 
-.transparent-box {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgb(255, 255, 255, 0.5);
-    padding: 20px;
-    border-radius: 10px;
-    box-sizing: border-box;
-    z-index: -1;
+.content {
+	padding: 25px;
+	background-color: rgba(255, 255, 255, 0.777);
+	border-radius: 15px;
 }
