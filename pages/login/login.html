@@ -1,32 +1,53 @@
 <template>
-  <div class="container mt-4">
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-6">
-        <h1 style="color: rgb(3, 3, 3); text-align: center;">Log ind</h1>
-        <img class="img-fluid" src="images/Logo-removebg-preview.png" alt="logo" style="width: 15%; display: block; margin: auto;">
+	<div class="container mt-4">
+		<div class="row justify-content-center">
+			<div class="col-12 col-md-6">
+				<h1 style="color: rgb(3, 3, 3); text-align: center">Log ind</h1>
+				<img
+					class="img-fluid"
+					src="images/Logo-removebg-preview.png"
+					alt="logo"
+					style="width: 15%; display: block; margin: auto"
+				/>
 
-        <form>
-          <div class="form-group mb-3">
-            <label for="username"><b>Brugernavn</b></label>
-            <input type="text" class="form-control" id="username" placeholder="Indtast Brugernavn" required>
-          </div>
+				<form>
+					<div class="form-group mb-3">
+						<label for="username"><b>Brugernavn</b></label>
+						<input
+							type="text"
+							class="form-control"
+							id="username"
+							placeholder="Indtast Brugernavn"
+							required
+						/>
+					</div>
 
-          <div class="form-group mb-3">
-            <label for="password"><b>Adgangskode</b></label>
-            <input type="password" class="form-control" id="password" placeholder="Indtast Adgangskode" required>
-          </div>
+					<div class="form-group mb-3">
+						<label for="password"><b>Adgangskode</b></label>
+						<input
+							type="password"
+							class="form-control"
+							id="password"
+							placeholder="Indtast Adgangskode"
+							required
+						/>
+					</div>
 
-          <div class="form-group text-center">
-            <button id="login-btn" class="btn btn-dark">Log ind</button>
-          </div>
+					<div class="form-group text-center">
+						<button id="login-btn" class="btn btn-dark">Log ind</button>
+					</div>
 
-          <p class="text-center mt-3">
-            Ikke medlem endnu? <a href="/signup" data-navigo>Opret bruger</a>
-          </p>
-        </form>
+					<p class="text-center mt-3">
+						Ikke medlem endnu? <a href="/signup" data-navigo>Opret bruger</a>
+					</p>
+				</form>
 
-        <p id="response-status" class="text-danger text-center mt-3" style="font-size: large;"></p>
-      </div>
-    </div>
-  </div>
+				<p
+					id="response-status"
+					class="text-danger text-center mt-3"
+					style="font-size: large"
+				></p>
+			</div>
+		</div>
+	</div>
 </template>

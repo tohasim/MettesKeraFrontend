@@ -1,10 +1,10 @@
 import "./navigo_EditedByLars.js"; //Will create the global Navigo, with a few changes, object used below
 
 import {
-  setActiveLink,
-  adjustForMissingHash,
-  renderTemplate,
-  loadTemplate,
+	setActiveLink,
+	adjustForMissingHash,
+	renderTemplate,
+	loadTemplate,
 } from "./utils.js";
 
 import { API_URL } from "./settings.js";
@@ -19,127 +19,121 @@ const token = localStorage.getItem("token");
 toggleLoginStatus(token);
 
 window.addEventListener("load", async () => {
-  populateCategories()
-  const templateSignup = await loadTemplate("./pages/signup/signup.html");
-  const templateLogin = await loadTemplate("./pages/login/login.html");
-  const templateNotFound = await loadTemplate("./pages/notFound/notFound.html");
-  const templateProductPage = await loadTemplate(
-    "./pages/product-page/product-page.html"
-  );
-  const templateOverviewPage = await loadTemplate(
-    "./pages/product-overview/product-overview.html"
-  );
-  const templateCreationForm = await loadTemplate(
-    "./pages/productCreation-Form/product-Creation-Form.html"
-  );
+	populateCategories();
+	const templateSignup = await loadTemplate("./pages/signup/signup.html");
+	const templateLogin = await loadTemplate("./pages/login/login.html");
+	const templateNotFound = await loadTemplate("./pages/notFound/notFound.html");
+	const templateProductPage = await loadTemplate(
+		"./pages/product-page/product-page.html"
+	);
+	const templateOverviewPage = await loadTemplate(
+		"./pages/product-overview/product-overview.html"
+	);
+	const templateCreationForm = await loadTemplate(
+		"./pages/productCreation-Form/product-Creation-Form.html"
+	);
 
-  adjustForMissingHash();
+	adjustForMissingHash();
 
-  const router = new Navigo("/", { hash: true });
-  //Not especially nice, BUT MEANT to simplify things. Make the router global so it can be accessed from all js-files
-  window.router = router;
+	const router = new Navigo("/", { hash: true });
+	//Not especially nice, BUT MEANT to simplify things. Make the router global so it can be accessed from all js-files
+	window.router = router;
 
-  router
-    .hooks({
-      before(done, match) {
-        setActiveLink("menu", match.url);
-        done();
-      },
-    })
-    .on({
-      //For very simple "templates", you can just insert your HTML directly like below
-      "/": () =>
-      (document.getElementById("content").innerHTML = `
+	router
+		.hooks({
+			before(done, match) {
+				setActiveLink("menu", match.url);
+				done();
+			},
+		})
+		.on({
+			//For very simple "templates", you can just insert your HTML directly like below
+			"/": () =>
+				(document.getElementById("content").innerHTML = `
         <h2>Mettes keramik shop</h2>
         <h5 style="color:red">Husk at sætte informationer om Mette ind her</h5>
      `),
-      "/product-page/:id": (params) => {
-        const id = params.data.id;
-        renderTemplate(templateProductPage, "content");
-        initProductPage(id);
-      },
-      "/product-overview/:searchTerm": (params) => {
-        //here the searchterm is required
-        const searchTerm = params.data.searchTerm;
-        renderTemplate(templateOverviewPage, "content");
-        initProductOverviewPage(searchTerm);
-      },
-      "/product-overview/": () => {
-        //The reason for having two product-overview is to avoid the "required" of the params on top
-        renderTemplate(templateOverviewPage, "content");
-        initProductOverviewPage();
-      },
-      "/create-product": () => {
-        renderTemplate(templateCreationForm, "content");
-        initCreationform();
-      },
-      "/signup": () => {
-        renderTemplate(templateSignup, "content");
-        initSignup();
-      },
-      "/login": (match) => {
-        renderTemplate(templateLogin, "content");
-        initLogin(match);
-      },
-      "/logout": () => {
-        () => router.navigate("/");
-        logout();
-      },
-    })
-    .notFound(() => {
-      renderTemplate(templateNotFound, "content");
-    })
-    .resolve();
-  window.addEventListener("scroll", adjustNavbarOnScroll);
+			"/product-page/:id": (params) => {
+				const id = params.data.id;
+				renderTemplate(templateProductPage, "content");
+				initProductPage(id);
+			},
+			"/product-overview": (match) => {
+				renderTemplate(templateOverviewPage, "content");
+				initProductOverviewPage(match);
+			},
+			"/create-product": () => {
+				renderTemplate(templateCreationForm, "content");
+				initCreationform();
+			},
+			"/signup": () => {
+				renderTemplate(templateSignup, "content");
+				initSignup();
+			},
+			"/login": (match) => {
+				renderTemplate(templateLogin, "content");
+				initLogin(match);
+			},
+			"/logout": () => {
+				() => router.navigate("/");
+				logout();
+			},
+		})
+		.notFound(() => {
+			renderTemplate(templateNotFound, "content");
+		})
+		.resolve();
+	window.addEventListener("scroll", adjustNavbarOnScroll);
 });
 
 window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
-  alert(
-    "Error: " +
-    errorMsg +
-    " Script: " +
-    url +
-    " Line: " +
-    lineNumber +
-    " Column: " +
-    column +
-    " StackTrace: " +
-    errorObj
-  );
+	alert(
+		"Error: " +
+			errorMsg +
+			" Script: " +
+			url +
+			" Line: " +
+			lineNumber +
+			" Column: " +
+			column +
+			" StackTrace: " +
+			errorObj
+	);
 };
 
 const searchBtn = document.getElementById("searchBtn");
 
 searchBtn.addEventListener("click", function () {
-  const searchInput = document.getElementById("searchInput");
-  // Get the search term from the input field
-  const searchTerm = searchInput.value;
-  console.log("Search term:", searchTerm);
-  // Navigate to the product overview with the search term as a parameter
-  router.navigate(`/product-overview/${encodeURIComponent(searchTerm)}`);
+	const searchInput = document.getElementById("searchInput");
+	// Get the search term from the input field
+	const searchTerm = searchInput.value;
+	console.log("Search term:", searchTerm);
+	// Navigate to the product overview with the search term as a parameter
+	router.navigate(
+		`/product-overview?searchTerm=${encodeURIComponent(searchTerm)}`
+	);
 });
 
 function adjustNavbarOnScroll() {
-  if (window.scrollY === 0) {
-    document.querySelector(".navbar").classList.remove("navbar-shrink");
-    document
-      .querySelector(".container-fluid")
-      .classList.remove("container-fluid-shrink");
-  }
-  else if (window.scrollY > 90) {
-    document.querySelector(".navbar").classList.add("navbar-shrink");
-    document
-      .querySelector(".container-fluid")
-      .classList.add("container-fluid-shrink");
-  }
+	if (window.scrollY === 0) {
+		document.querySelector(".navbar").classList.remove("navbar-shrink");
+		document
+			.querySelector(".container-fluid")
+			.classList.remove("container-fluid-shrink");
+	} else if (window.scrollY > 90) {
+		document.querySelector(".navbar").classList.add("navbar-shrink");
+		document
+			.querySelector(".container-fluid")
+			.classList.add("container-fluid-shrink");
+	}
 }
 async function populateCategories() {
-  const categoryholder = document.getElementById("category-holder")
-  const categories = await fetch(API_URL + "/categories").then(res => res.json())
-  categories.forEach(element => {
-    categoryholder.innerHTML += `<li><a class="dropdown-item" href="/${element.name} " style="color:darkgray" data-navigo>${element.name}</a></li>
-    `
-
-  });
-
+	const categoryholder = document.getElementById("category-holder");
+	const categories = await fetch(API_URL + "/categories").then((res) =>
+		res.json()
+	);
+	categories.forEach((element) => {
+		categoryholder.innerHTML += `<li><a class="dropdown-item" href="/product-overview?category=${element.name}" style="color:darkgray" data-navigo>${element.name}</a></li>
+    `;
+	});
 }

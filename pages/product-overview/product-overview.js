@@ -1,9 +1,13 @@
 import { API_URL, SAS_TOKEN } from "../../settings.js";
 
-export async function initProductOverviewPage(searchTerm) {
+export async function initProductOverviewPage(match) {
+	const searchTerm = match?.params?.searchTerm;
+	const categoryChoice = match?.params?.category;
 	console.log("Search term on product overview:", searchTerm);
-
-	if (searchTerm) {
+	if (categoryChoice) {
+		const categoryResults = await getItemsFromCategory(categoryChoice);
+		fetchAndDisplayProducts(categoryResults);
+	} else if (searchTerm) {
 		const searchResults = await getSearchItems(searchTerm);
 		fetchAndDisplayProducts(searchResults);
 	} else {
@@ -25,6 +29,20 @@ async function getSearchItems(searchTerm) {
 				product.name.toLowerCase().includes(term) ||
 				product.description.toLowerCase().includes(term)
 			);
+		});
+	} catch (error) {
+		console.error("Error in getSearchItems:", error);
+	}
+}
+
+async function getItemsFromCategory(category) {
+	try {
+		const res = await fetch(API_URL + "/products/detailed");
+		const data = await res.json();
+
+		return data.filter((product) => {
+			const term = category.toLowerCase();
+			return product.category.toLowerCase().includes(term);
 		});
 	} catch (error) {
 		console.error("Error in getSearchItems:", error);
